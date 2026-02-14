@@ -127,6 +127,7 @@ Exemplo do detalhe com URL do projeto e dados do Pokemon:
   "url": "https://pokemon-rededor.com/pokemon/25"
 }
 </script>
+```
 - **`sitemap.xml` e `robots.txt` via SSR**: o `server.ts` serve esses endpoints diretamente no Node, facilitando indexação e rastreamento. O sitemap inclui a home e pode ser expandido para outras rotas.
 
 **Canonical**  
