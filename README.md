@@ -10,6 +10,18 @@ Aplicação Angular 17 com SSR que consome a PokéAPI para listar Pokémon com p
 - **Responsivo**: layout fluido, grid adaptativo e breakpoints.
 - **UI**: Angular Material + tema customizado (SCSS) e tipografia própria.
 
+### Diagrama simples de arquitetura
+```mermaid
+graph TD
+  U[Usuario / Navegador] -->|SSR HTML| S[SSR Node/Express]
+  S -->|Render| A[Angular App]
+  A -->|HTTP| P[PokéAPI]
+  A -->|SEO| M[Meta Tags / JSON-LD]
+  A -->|UI| C[Componentes + Angular Material]
+  A -->|Tokens| T[Tokens CSS]
+```
+
+
 ## Tecnologias
 - Angular 17 (Standalone + SSR)
 - Angular Material
@@ -150,15 +162,3 @@ Inclui testes de:
 ## Observações
 - A imagem do Pokémon usa o artwork oficial quando disponível, com fallback local em `assets/pokemon-placeholder.svg`.
 - O layout foi feito com Angular Material e tema customizado.
-
-
-### Diagrama simples de arquitetura
-```mermaid
-graph TD
-  U[Usuario / Navegador] -->|SSR HTML| S[SSR Node/Express]
-  S -->|Render| A[Angular App]
-  A -->|HTTP| P[PokéAPI]
-  A -->|SEO| M[Meta Tags / JSON-LD]
-  A -->|UI| C[Componentes + Angular Material]
-  A -->|Tokens| T[Tokens CSS]
-```
