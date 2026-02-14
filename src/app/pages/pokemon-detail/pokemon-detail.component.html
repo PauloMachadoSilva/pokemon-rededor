@@ -1,0 +1,98 @@
+<section *ngIf="isLoading" class="loading-state" aria-live="polite">
+  <mat-icon aria-hidden="true">hourglass_empty</mat-icon>
+  <p>Carregando detalhes...</p>
+</section>
+
+<section
+  *ngIf="!isLoading && errorMessage"
+  class="error-state"
+  role="alert"
+>
+  <mat-icon aria-hidden="true">error</mat-icon>
+  <div>
+    <h2>Ops! Algo deu errado.</h2>
+    <p>{{ errorMessage }}</p>
+    <button mat-stroked-button routerLink="/">Voltar para a lista</button>
+  </div>
+</section>
+
+<section *ngIf="!isLoading && pokemon" class="detail">
+  <div class="detail-header">
+    <button mat-stroked-button routerLink="/">
+      <mat-icon>arrow_back</mat-icon>
+      Voltar
+    </button>
+
+    <div class="title-block">
+      <span class="pokemon-id">#{{ formatId(pokemon.id) }}</span>
+      <h1>{{ formatName(pokemon.name) }}</h1>
+      <mat-chip-set aria-label="Tipos do Pokémon">
+        <mat-chip
+          *ngFor="let type of pokemon.types"
+          class="type-chip"
+          [ngStyle]="{ '--chip-color': typeColors[type.type.name] || '#cbd5f5' }"
+        >
+          {{ typeLabels[type.type.name] ?? type.type.name }}
+        </mat-chip>
+      </mat-chip-set>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <mat-card class="image-card">
+      <div class="image-wrapper">
+        <img
+          [src]="imageUrl || 'assets/pokemon-placeholder.svg'"
+          [alt]="'Ilustração do Pokémon ' + formatName(pokemon.name)"
+        />
+      </div>
+      <p class="image-caption" *ngIf="description">{{ description }}</p>
+    </mat-card>
+
+    <mat-card class="info-card">
+      <h2>Resumo rápido</h2>
+      <div class="info-grid">
+        <div>
+          <span>Altura</span>
+          <strong>{{ getHeight(pokemon.height) }}</strong>
+        </div>
+        <div>
+          <span>Peso</span>
+          <strong>{{ getWeight(pokemon.weight) }}</strong>
+        </div>
+        <div>
+          <span>Habilidades</span>
+          <strong>{{ abilitiesText }}</strong>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="cta">
+        <p>
+          Quer comparar este Pokémon com outro? Volte à lista e aplique os
+          filtros por tipo para descobrir combinações interessantes.
+        </p>
+        <button mat-flat-button color="primary" routerLink="/">
+          Explorar mais
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <mat-card class="stats-card">
+    <h2>Estatísticas base</h2>
+    <div class="stats-list">
+      <div class="stat" *ngFor="let stat of pokemon.stats">
+        <div class="stat-header">
+          <span>{{ statLabels[stat.stat.name] ?? stat.stat.name }}</span>
+          <strong>{{ stat.base_stat }}</strong>
+        </div>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="statValue(stat.base_stat)"
+        ></mat-progress-bar>
+      </div>
+    </div>
+  </mat-card>
+</section>

@@ -1,0 +1,31 @@
+<a class="skip-link" href="#main-content">Pular para conteudo principal</a>
+
+<mat-toolbar class="app-toolbar">
+  <a class="brand" routerLink="/" aria-label="Ir para a lista de Pokémon">
+    <span class="brand-mark">RD</span>
+    <span class="brand-text">RedeDor Pokédex</span>
+  </a>
+  <span class="spacer"></span>
+  <mat-slide-toggle
+    class="seo-toggle"
+    [checked]="seoDebugEnabled"
+    (change)="toggleSeoDebug($event.checked)"
+    aria-label="Ativar debug de SEO"
+    matTooltip="Ativa logs de SEO e JSON-LD no console usando localStorage (seo_debug=1)"
+    matTooltipPosition="below"
+  >
+    SEO Debug
+  </mat-slide-toggle>
+  <button mat-stroked-button routerLink="/">Explorar</button>
+</mat-toolbar>
+
+<main class="app-main" id="main-content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="app-footer">
+  <div>
+    <strong>Dados oficiais:</strong> PokéAPI. Interface SSR com Angular 17.
+  </div>
+  <div>Feito para o desafio RedeDor.</div>
+</footer>

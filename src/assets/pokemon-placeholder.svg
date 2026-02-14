@@ -1,0 +1,9 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="320" rx="32" fill="#E2E8F0"/>
+  <circle cx="160" cy="160" r="96" fill="#CBD5F5"/>
+  <circle cx="160" cy="160" r="28" fill="#94A3B8"/>
+  <path d="M64 160H256" stroke="#94A3B8" stroke-width="12" stroke-linecap="round"/>
+  <text x="160" y="290" text-anchor="middle" fill="#475569" font-family="Arial" font-size="14">
+    Imagem indisponível
+  </text>
+</svg>

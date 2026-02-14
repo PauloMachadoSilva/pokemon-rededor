@@ -1,0 +1,164 @@
+:host {
+  display: block;
+}
+
+.loading-state,
+.error-state {
+  display: grid;
+  place-items: center;
+  gap: 0.75rem;
+  padding: var(--detail-state-padding);
+  text-align: center;
+  background: var(--detail-state-bg);
+  border-radius: var(--detail-state-radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.error-state {
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--detail-header-gap);
+}
+
+.error-state mat-icon {
+  font-size: 2.2rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  color: var(--danger);
+}
+
+.detail-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--detail-header-gap);
+  align-items: center;
+  margin-bottom: var(--detail-header-bottom);
+}
+
+.title-block h1 {
+  margin: 0.2rem 0 0.6rem;
+  font-size: clamp(2rem, 3vw, 3rem);
+  color: var(--ink-strong);
+}
+
+.pokemon-id {
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+}
+
+.type-chip {
+  --chip-color: #cbd5f5;
+  background: var(--chip-color);
+  color: #1f2937;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.detail-grid {
+  display: grid;
+  gap: var(--detail-grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  margin-bottom: var(--detail-header-bottom);
+}
+
+.image-card {
+  padding: var(--detail-card-padding);
+  border-radius: var(--detail-card-radius);
+  background: var(--detail-image-bg);
+  box-shadow: var(--shadow-soft);
+}
+
+.image-wrapper {
+  display: grid;
+  place-items: center;
+  min-height: var(--detail-image-min-height);
+}
+
+.image-wrapper img {
+  max-width: 260px;
+  width: 100%;
+  filter: var(--detail-image-shadow);
+}
+
+.image-caption {
+  margin-top: 1rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+.info-card {
+  padding: var(--detail-card-padding);
+  border-radius: var(--detail-card-radius);
+  background: var(--detail-info-bg);
+  color: #fff;
+}
+
+.info-card h2 {
+  margin: 0 0 1.5rem;
+}
+
+.info-grid {
+  display: grid;
+  gap: var(--detail-info-grid-gap);
+  margin-bottom: var(--detail-header-gap);
+}
+
+.info-grid span {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.35rem;
+}
+
+.info-grid strong {
+  font-size: 1.1rem;
+}
+
+.info-card mat-divider {
+  margin: var(--detail-header-gap) 0;
+  background: var(--detail-info-divider);
+}
+
+.cta {
+  display: grid;
+  gap: 1rem;
+  align-items: start;
+}
+
+.stats-card {
+  padding: var(--detail-card-padding);
+  border-radius: var(--detail-card-radius);
+  background: var(--detail-stats-bg);
+  box-shadow: var(--shadow-soft);
+}
+
+.stats-card h2 {
+  margin-top: 0;
+}
+
+.stats-list {
+  display: grid;
+  gap: var(--detail-stats-gap);
+}
+
+.stat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  color: var(--ink-strong);
+}
+
+mat-progress-bar {
+  height: var(--detail-progress-height);
+  border-radius: 999px;
+}
+
+@media (max-width: 720px) {
+  .detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

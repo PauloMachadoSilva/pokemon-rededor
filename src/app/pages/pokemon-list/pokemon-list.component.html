@@ -1,0 +1,157 @@
+<section class="hero">
+  <div class="hero-text">
+    <p class="kicker">RedeDor Pokédex</p>
+    <h1>Explore a lista completa de Pokémon</h1>
+    <p>
+      Descubra espécies, filtre por tipo e encontre rapidamente seu favorito com
+      uma experiência responsiva, acessível e otimizada para SEO.
+    </p>
+  </div>
+  <div class="hero-panel" role="presentation">
+    <div class="hero-stat">
+      <span>Total em destaque</span>
+      <strong>{{ totalCount | number }} registros</strong>
+    </div>
+    <div class="hero-stat">
+      <span>Filtro ativo</span>
+      <strong>{{ typeSummary() }}</strong>
+    </div>
+  </div>
+</section>
+
+<section class="filters" aria-label="Filtros de busca">
+  <mat-form-field appearance="outline" class="filter-field">
+    <mat-label>Buscar por nome</mat-label>
+    <input
+      matInput
+      placeholder="Ex: pikachu"
+      aria-label="Buscar Pokémon pelo nome"
+      [formControl]="searchControl"
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      type="button"
+      aria-label="Limpar busca"
+      *ngIf="searchControl.value"
+      (click)="searchControl.setValue('')"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="filter-field">
+    <mat-label>Tipo</mat-label>
+    <mat-select
+      aria-label="Filtrar Pokémon por tipo"
+      [formControl]="typeControl"
+      [multiple]="true"
+    >
+      <mat-option *ngFor="let type of types" [value]="type.name">
+        {{ type.label }}
+      </mat-option>
+      <mat-select-trigger>
+        {{ typeSummary() }}
+      </mat-select-trigger>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="filter-summary" aria-live="polite">
+  <span>{{ totalCount }} resultados</span>
+  <span *ngIf="isPageLoading">Atualizando...</span>
+  </div>
+</section>
+
+<mat-progress-bar
+  *ngIf="isPageLoading"
+  mode="indeterminate"
+  class="progress-bar"
+></mat-progress-bar>
+
+<section *ngIf="isLoading" class="loading-state" aria-live="polite">
+  <mat-spinner diameter="48"></mat-spinner>
+  <p>Carregando Pokémon...</p>
+</section>
+
+<section
+  *ngIf="!isLoading && errorMessage"
+  class="error-state"
+  role="alert"
+>
+  <mat-icon aria-hidden="true">error</mat-icon>
+  <div>
+    <h2>Ops! Algo deu errado.</h2>
+    <p>{{ errorMessage }}</p>
+    <button mat-stroked-button type="button" (click)="loadPage()">
+      Tentar novamente
+    </button>
+  </div>
+</section>
+
+<section *ngIf="!isLoading && !errorMessage" class="results">
+  <div *ngIf="pokemonCards.length === 0" class="empty-state" role="status">
+    <mat-icon aria-hidden="true">search_off</mat-icon>
+    <h2>Nenhum Pokémon encontrado</h2>
+    <p>Teste outro nome ou outro tipo para ampliar sua busca.</p>
+  </div>
+
+  <div class="pokemon-grid">
+    <a
+      class="pokemon-card"
+      *ngFor="let pokemon of pokemonCards; let i = index; trackBy: trackById"
+      [routerLink]="['/pokemon', pokemon.id]"
+      [attr.aria-label]="
+        'Ver detalhes do Pokémon ' + formatName(pokemon.name)
+      "
+      matRipple
+    >
+      <mat-card>
+        <div class="card-header">
+          <span class="pokemon-id">#{{ formatId(pokemon.id) }}</span>
+          <mat-icon aria-hidden="true">north_east</mat-icon>
+        </div>
+        <div
+          class="pokemon-image"
+          [class.is-loading]="!isImageLoaded(pokemon.id)"
+        >
+          <img
+            [src]="pokemon.image || 'assets/pokemon-placeholder.svg'"
+            [alt]="'Ilustração do Pokémon ' + formatName(pokemon.name)"
+            [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+            [attr.fetchpriority]="i === 0 ? 'high' : 'auto'"
+            (load)="markImageLoaded(pokemon.id)"
+            (error)="markImageLoaded(pokemon.id)"
+          />
+        </div>
+        <div class="pokemon-info">
+          <h3>{{ formatName(pokemon.name) }}</h3>
+          <mat-chip-set
+            *ngIf="selectedTypes.length > 0"
+            aria-label="Tipos selecionados"
+          >
+            <mat-chip
+              class="type-chip"
+              [ngStyle]="{
+                '--chip-color': typeColors[type] || '#cbd5f5'
+              }"
+              *ngFor="let type of selectedTypes"
+            >
+              {{ typeLabels[type] ?? type }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+      </mat-card>
+    </a>
+  </div>
+</section>
+
+<mat-paginator
+  class="paginator"
+  [length]="totalCount"
+  [pageIndex]="pageIndex"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[12, 24, 36]"
+  [showFirstLastButtons]="true"
+  aria-label="Paginação de Pokémon"
+  (page)="onPageChange($event)"
+></mat-paginator>

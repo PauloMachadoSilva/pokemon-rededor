@@ -1,0 +1,68 @@
+@use '@angular/material' as mat;
+@use './styles/tokens';
+@use './styles/page-tokens';
+
+@include mat.core();
+
+$primary: mat.define-palette(mat.$teal-palette, 600);
+$accent: mat.define-palette(mat.$amber-palette, 400);
+$warn: mat.define-palette(mat.$red-palette, 500);
+
+$typography: mat.define-typography-config(
+  $font-family: 'Source Sans 3, Space Grotesk, sans-serif',
+  $headline-1: mat.define-typography-level(48px, 1.1, 700),
+  $headline-2: mat.define-typography-level(40px, 1.2, 700),
+  $headline-3: mat.define-typography-level(32px, 1.2, 700),
+  $headline-4: mat.define-typography-level(28px, 1.2, 700),
+  $headline-5: mat.define-typography-level(24px, 1.3, 600),
+  $headline-6: mat.define-typography-level(20px, 1.3, 600),
+  $subtitle-1: mat.define-typography-level(16px, 1.5, 600),
+  $body-1: mat.define-typography-level(16px, 1.6, 400),
+  $body-2: mat.define-typography-level(14px, 1.6, 400),
+  $button: mat.define-typography-level(14px, 1, 600)
+);
+
+$theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn
+    ),
+    typography: $typography,
+    density: 0
+  )
+);
+
+@include mat.all-component-themes($theme);
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Source Sans 3', sans-serif;
+  color: var(--ink-strong);
+  background: var(--page-background);
+}
+
+a {
+  color: inherit;
+}
+
+mat-toolbar {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Space Grotesk', sans-serif;
+}
