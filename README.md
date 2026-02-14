@@ -15,8 +15,10 @@ Aplicação Angular 17 com SSR que consome a PokéAPI para listar Pokémon com p
 graph TD
   U[Usuario / Navegador] -->|SSR HTML| S[SSR Node/Express]
   S -->|Render| A[Angular App]
+  S -->|Serve| R[robots.txt / sitemap.xml]
   A -->|HTTP| P[PokéAPI]
-  A -->|SEO| M[Meta Tags / JSON-LD]
+  A -->|Sprites| G[GitHub Sprites]
+  A -->|SEO| M[Meta Tags / JSON-LD / Canonical / Twitter]
   A -->|UI| C[Componentes + Angular Material]
   A -->|Tokens| T[Tokens CSS]
 ```
