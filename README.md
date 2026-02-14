@@ -112,8 +112,31 @@ Rotas SSR também servem:
 
 **Detalhes dos ajustes de SEO**
 - **Canonical + Twitter Cards**: o `SeoService` agora gera `link rel="canonical"` e as tags `twitter:*` com base nas informações de cada rota. Isso evita duplicidade de conteúdo e garante previews completos quando a URL é compartilhada.
+- **Outras redes**: Open Graph (`og:*`) cobre Facebook, LinkedIn, WhatsApp, Telegram e outras. O uso de Twitter Cards foi incluído como **exemplo**, e o mesmo padrão pode ser estendido para outras plataformas.
 - **JSON‑LD nas páginas**: a lista injeta `ItemList` (com posição, nome e URL dos Pokémon) e o detalhe injeta `Thing` (com nome, descrição, imagem e identificador). Isso melhora a interpretação semântica pelos mecanismos de busca.
+
+Exemplo do detalhe com URL do projeto e dados do Pokemon:
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Thing",
+  "name": "Pikachu",
+  "description": "Detalhes, estatisticas e habilidades do Pokemon Pikachu.",
+  "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+  "url": "https://pokemon-rededor.com/pokemon/25"
+}
+</script>
 - **`sitemap.xml` e `robots.txt` via SSR**: o `server.ts` serve esses endpoints diretamente no Node, facilitando indexação e rastreamento. O sitemap inclui a home e pode ser expandido para outras rotas.
+
+**Canonical**  
+Canonical define a URL oficial da pagina para buscadores.  
+Exemplo:
+```html
+<link rel="canonical" href="https://meusite.com/pokemon/25">
+```
+Se a mesma pagina puder aparecer em URLs diferentes (ex.: com filtros), o canonical evita duplicacao e concentra o SEO em uma unica URL.
+
 
 **Debug no console (via switch)**  
 O `SeoService` imprime no console as tags geradas e o JSON‑LD quando o toggle **SEO Debug** esta ativo.  
