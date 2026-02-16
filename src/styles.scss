@@ -1,13 +1,11 @@
 @use '@angular/material' as mat;
 @use './styles/tokens';
 @use './styles/page-tokens';
-
-@include mat.core();
+@include mat.core;
 
 $primary: mat.define-palette(mat.$teal-palette, 600);
 $accent: mat.define-palette(mat.$amber-palette, 400);
 $warn: mat.define-palette(mat.$red-palette, 500);
-
 $typography: mat.define-typography-config(
   $font-family: 'Source Sans 3, Space Grotesk, sans-serif',
   $headline-1: mat.define-typography-level(48px, 1.1, 700),
@@ -21,7 +19,6 @@ $typography: mat.define-typography-config(
   $body-2: mat.define-typography-level(14px, 1.6, 400),
   $button: mat.define-typography-level(14px, 1, 600)
 );
-
 $theme: mat.define-light-theme(
   (
     color: (

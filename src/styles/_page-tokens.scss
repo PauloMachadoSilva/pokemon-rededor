@@ -5,55 +5,46 @@
   --list-hero-padding-md: 2rem;
   --list-hero-padding-sm: 1.5rem;
   --list-hero-radius: var(--radius-xl);
-  --list-hero-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(242, 247, 255, 0.85));
-  --list-hero-glow: radial-gradient(circle, rgba(15, 118, 110, 0.25), transparent 70%);
+  --list-hero-bg: linear-gradient(135deg, rgb(255 255 255 / 92%), rgb(242 247 255 / 85%));
+  --list-hero-glow: radial-gradient(circle, rgb(15 118 110 / 25%), transparent 70%);
   --list-hero-panel-gap: 1.25rem;
   --list-hero-panel-padding: 1.5rem;
   --list-hero-panel-padding-sm: 1.2rem;
   --list-hero-panel-radius: 18px;
-  --list-hero-panel-bg: rgba(15, 23, 42, 0.88);
-
+  --list-hero-panel-bg: rgb(15 23 42 / 88%);
   --list-filter-gap: 1.2rem;
   --list-filter-bottom: 1.5rem;
-
   --list-state-padding: 2.5rem;
   --list-state-radius: var(--radius-lg);
-  --list-state-bg: rgba(255, 255, 255, 0.7);
-
+  --list-state-bg: rgb(255 255 255 / 70%);
   --list-grid-gap: 1.5rem;
   --list-card-padding: 1.25rem;
   --list-card-radius: var(--radius-lg);
-  --list-card-bg: linear-gradient(180deg, #ffffff 0%, #f6f7ff 100%);
-  --list-card-border: 1px solid rgba(15, 23, 42, 0.06);
-  --list-card-border-hover: rgba(14, 116, 144, 0.4);
-  --list-card-glow: radial-gradient(circle at 20% 20%, rgba(14, 116, 144, 0.12), transparent 55%),
-    radial-gradient(circle at 80% 0%, rgba(245, 158, 11, 0.18), transparent 45%);
-
-  --list-image-shadow: drop-shadow(0 18px 24px rgba(15, 23, 42, 0.2));
-  --list-image-shadow-hover: drop-shadow(0 26px 28px rgba(15, 23, 42, 0.25));
-
-  --list-paginator-bg: rgba(255, 255, 255, 0.8);
+  --list-card-bg: linear-gradient(180deg, #fff 0%, #f6f7ff 100%);
+  --list-card-border: 1px solid rgb(15 23 42 / 6%);
+  --list-card-border-hover: rgb(14 116 144 / 40%);
+  --list-card-glow: radial-gradient(circle at 20% 20%, rgb(14 116 144 / 12%), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgb(245 158 11 / 18%), transparent 45%);
+  --list-image-shadow: drop-shadow(0 18px 24px rgb(15 23 42 / 20%));
+  --list-image-shadow-hover: drop-shadow(0 26px 28px rgb(15 23 42 / 25%));
+  --list-paginator-bg: rgb(255 255 255 / 80%);
 
   /* Pokemon detail page */
   --detail-state-padding: 2.5rem;
   --detail-state-radius: var(--radius-lg);
-  --detail-state-bg: rgba(255, 255, 255, 0.7);
-
+  --detail-state-bg: rgb(255 255 255 / 70%);
   --detail-header-gap: 1.5rem;
   --detail-header-bottom: 2rem;
-
   --detail-grid-gap: 2rem;
   --detail-card-padding: 1.75rem;
   --detail-card-radius: 22px;
-  --detail-image-bg: linear-gradient(160deg, #ffffff, #f4f6ff);
+  --detail-image-bg: linear-gradient(160deg, #fff, #f4f6ff);
   --detail-image-min-height: 260px;
-  --detail-image-shadow: drop-shadow(0 18px 24px rgba(15, 23, 42, 0.2));
-
-  --detail-info-bg: rgba(15, 23, 42, 0.92);
+  --detail-image-shadow: drop-shadow(0 18px 24px rgb(15 23 42 / 20%));
+  --detail-info-bg: rgb(15 23 42 / 92%);
   --detail-info-grid-gap: 1.2rem;
-  --detail-info-divider: rgba(255, 255, 255, 0.2);
-
-  --detail-stats-bg: #ffffff;
+  --detail-info-divider: rgb(255 255 255 / 20%);
+  --detail-stats-bg: #fff;
   --detail-stats-gap: 1.25rem;
   --detail-progress-height: 8px;
 }

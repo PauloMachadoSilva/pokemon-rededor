@@ -33,6 +33,8 @@ graph TD
 - HTML5 / CSS3
 - PokéAPI (origem dos dados)
 - Karma + Jasmine (testes)
+- ESLint (lint de TypeScript/HTML)
+- Stylelint (lint de SCSS)
 
 ## Tokens de estilo
 Os estilos foram padronizados com **tokens CSS**:
@@ -175,6 +177,17 @@ Inclui testes de:
 - `PokeApiService` (cache e filtros)
 - UI básica dos componentes de lista e detalhe
 - snapshots simples de SEO (título e metatags)
+
+## Lint
+```bash
+cd pokemon-rededor
+npm run lint
+npm run lint:styles
+npm run lint:all
+```
+`lint` valida TypeScript e templates Angular.  
+`lint:styles` valida os arquivos SCSS.  
+`lint:all` roda ambos em sequência.
 
 ## Requisitos atendidos
 - Angular 17+ com SSR

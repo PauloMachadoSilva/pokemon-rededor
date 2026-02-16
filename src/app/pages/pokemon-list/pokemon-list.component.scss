@@ -69,7 +69,7 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgb(255 255 255 / 65%);
   margin-bottom: 0.4rem;
 }
 
@@ -201,7 +201,6 @@
   width: 100%;
   height: auto;
   filter: var(--list-image-shadow);
-  transition: transform 0.25s ease, filter 0.25s ease;
   opacity: 1;
   transition: opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
 }
@@ -217,9 +216,9 @@
   border-radius: 999px;
   background: linear-gradient(
     90deg,
-    rgba(30, 41, 59, 0.75) 0%,
-    rgba(226, 232, 240, 0.95) 50%,
-    rgba(30, 41, 59, 0.75) 100%
+    rgb(30 41 59 / 75%) 0%,
+    rgb(226 232 240 / 95%) 50%,
+    rgb(30 41 59 / 75%) 100%
   );
   opacity: 1;
   animation: shimmer 0.9s infinite;
@@ -231,6 +230,7 @@
   0% {
     transform: translateX(-60%);
   }
+
   100% {
     transform: translateX(60%);
   }
@@ -250,6 +250,7 @@
 
 .type-chip {
   --chip-color: #cbd5f5;
+
   background: var(--chip-color);
   color: #1f2937;
   font-weight: 600;
@@ -263,7 +264,7 @@
   box-shadow: var(--shadow-soft);
 }
 
-@media (max-width: 960px) {
+@media (width <= 960px) {
   .hero {
     grid-template-columns: 1fr;
     padding: var(--list-hero-padding-md);
@@ -278,7 +279,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .hero {
     padding: var(--list-hero-padding-sm);
   }

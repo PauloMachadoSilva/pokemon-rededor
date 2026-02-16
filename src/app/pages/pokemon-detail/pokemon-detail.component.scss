@@ -48,6 +48,7 @@
 
 .type-chip {
   --chip-color: #cbd5f5;
+
   background: var(--chip-color);
   color: #1f2937;
   font-weight: 600;
@@ -108,7 +109,7 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgb(255 255 255 / 60%);
   margin-bottom: 0.35rem;
 }
 
@@ -156,7 +157,7 @@ mat-progress-bar {
   border-radius: 999px;
 }
 
-@media (max-width: 720px) {
+@media (width <= 720px) {
   .detail-header {
     flex-direction: column;
     align-items: flex-start;
