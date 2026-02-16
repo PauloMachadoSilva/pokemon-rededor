@@ -213,16 +213,16 @@
 .pokemon-image.is-loading::before {
   content: '';
   position: absolute;
-  inset: 8px 12px;
+  inset: 4px 8px;
   border-radius: 999px;
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(30, 41, 59, 0.75) 0%,
+    rgba(226, 232, 240, 0.95) 50%,
+    rgba(30, 41, 59, 0.75) 100%
   );
-  opacity: 0.6;
-  animation: shimmer 1.2s infinite;
+  opacity: 1;
+  animation: shimmer 0.9s infinite;
   mix-blend-mode: screen;
   pointer-events: none;
 }
