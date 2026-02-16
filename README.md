@@ -23,6 +23,8 @@ graph TD
   A -->|Tokens| T[Tokens CSS]
 ```
 
+## Detalhes do Planejamento e Arquitetura
+- [Planejamento e Arquitetura](./PLANEJAMENTO_ARQUITETURA.md)
 
 ## Tecnologias
 - Angular 17 (Standalone + SSR)
