@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, map, tap } from 'rxjs';
+import { Observable, of, map, tap, catchError } from 'rxjs';
 import {
   NamedApiResource,
   PokemonByTypeResponse,
@@ -87,9 +87,11 @@ export class PokeApiService {
     );
   }
 
-  getPokemonSpecies(nameOrId: string | number): Observable<PokemonSpecies> {
+  getPokemonSpecies(nameOrId: string | number): Observable<PokemonSpecies | null> {
     const key = String(nameOrId).toLowerCase();
-    return this.http.get<PokemonSpecies>(`${this.api}/pokemon-species/${key}`);
+    return this.http.get<PokemonSpecies>(`${this.api}/pokemon-species/${key}`).pipe(
+      catchError(() => of(null))
+    );
   }
 
   getPokemonImage(detail: PokemonDetail): string | null {

@@ -118,13 +118,37 @@ export class PokemonDetailComponent implements OnInit, OnDestroy {
   }
 
   get description(): string {
-    if (!this.species) {
-      return '';
-    }
-    const entry = this.species.flavor_text_entries.find(
+    const entry = this.species?.flavor_text_entries.find(
       (item) => item.language.name === 'en'
     );
-    return entry ? entry.flavor_text.replace(/\f|\n|\r/g, ' ') : '';
+    if (entry) {
+      return entry.flavor_text.replace(/\f|\n|\r/g, ' ');
+    }
+    return this.buildFallbackDescription();
+  }
+
+  private buildFallbackDescription(): string {
+    if (!this.pokemon) {
+      return '';
+    }
+    const name = this.formatName(this.pokemon.name);
+    const types = this.pokemon.types.map((type) =>
+      this.formatName(type.type.name)
+    );
+    const abilities = this.abilitiesText;
+    const parts: string[] = [`${name} é um Pokémon`];
+
+    if (types.length === 1) {
+      parts.push(`do tipo ${types[0]}`);
+    } else if (types.length > 1) {
+      parts.push(`dos tipos ${types.join(' e ')}`);
+    }
+
+    if (abilities) {
+      parts.push(`com habilidades ${abilities}`);
+    }
+
+    return `${parts.join(' ')}.`;
   }
 
   formatId(id: number): string {
