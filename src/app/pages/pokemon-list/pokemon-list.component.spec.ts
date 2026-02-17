@@ -17,6 +17,11 @@ class MockPokeApiService {
   getPokemonTypes = jasmine
     .createSpy()
     .and.returnValue(of([{ name: 'grass', url: '' }]));
+  getAllPokemonList = jasmine
+    .createSpy()
+    .and.returnValue(
+      of([{ name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' }])
+    );
   getPokemonListByType = jasmine
     .createSpy()
     .and.returnValue(
